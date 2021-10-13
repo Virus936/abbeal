@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import styled from 'styled-components'
-import color from '../params/color'
+import color, {size} from '../params/color'
 
 function PromiseItem({content, index}){
   return(
@@ -17,15 +17,16 @@ function PromiseItem({content, index}){
 }
 const Container = styled.div`
   position:relative;
-  &:nth-of-type(3n+1){
-    transform:translateX(-50%);
-  }
-  &:nth-of-type(3n+2){
-    transform:translateX(-25%);
-  }
-
-  &:nth-of-type(3n){
-    transform:translateX(0%);
+  @media(min-width:${size.mobile}){
+    &:nth-of-type(3n+1){
+      transform:translateX(-50%);
+    }
+    &:nth-of-type(3n+2){
+      transform:translateX(-25%);
+    }
+    &:nth-of-type(3n){
+      transform:translateX(0%);
+    }
   }
   h1{
     color:${color.background};
@@ -34,6 +35,9 @@ const Container = styled.div`
   p{
    margin-left:2em; 
    white-space:nowrap;
+   @media(max-width:${ size.mobile }){
+    white-space:normal;
+   }
   }
   &::after{
     position:absolute;

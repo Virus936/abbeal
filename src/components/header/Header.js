@@ -1,6 +1,8 @@
 import React  from "react"
 import styled from 'styled-components'
 import color from '../params/color'
+import { Link } from "react-router-dom";
+
 
 
 function Header(){
@@ -8,8 +10,8 @@ function Header(){
     <Container>
       <h1>abbeal</h1>
       <nav>
-        <div>À propos</div>
-        <div>Projets</div>
+        <div><Link to='/'>À propos</Link></div>
+        <div><Link to='/projet'>Projets</Link></div>
         <div>Valley</div>
         <div>Contact</div>
         <div>Jobs</div>
@@ -38,7 +40,7 @@ const Container = styled.header`
 
   @media(max-width:300px){
 
-  background-color:${color.background};
+    background-color:${color.background};
   }
   h1{
     cursor:pointer;
@@ -49,6 +51,8 @@ const Container = styled.header`
     gap:4rem;
     div{
       cursor:pointer;
+      
+      white-space:nowrap;
     }
   }
   div{

@@ -1,13 +1,13 @@
 import React, {useState} from "react"
 import styled from 'styled-components'
-import color from '../params/color'
+import color,{size} from '../params/color'
 
 function ExpertItem({title, expert}){
   return(
     <Container>
       <h2>{title}</h2>
       <ul>
-        {expert.map(e => <li>{e}</li>)}
+        {expert.map(e => <li key={e}>{e}</li>)}
       </ul>
     </Container>
     )
@@ -15,6 +15,11 @@ function ExpertItem({title, expert}){
 const Container = styled.div`
   display:flex;
   justify-content:flex-end;
+  white-space:nowrap;
+
+  @media(max-width:${size.mobile}){
+    flex-direction:column;
+  }
 
   h2{
   margin-right:2em;

@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import styled from 'styled-components'
 import ExpertItem from './ExpertItem'
-import color from '../params/color'
+import color, {size} from '../params/color'
 
 function Expert(){
   return(
@@ -24,10 +24,20 @@ const Container = styled.div`
   width:100%;
   align-items:center;
 
+  @media(max-width:${size.mobile}){
+    flex-direction:column;
+  }
+
   h1{
     width:50%;
     font-size:6em;
     color:${color.fonts};
+
+    @media(max-width:${size.mobile}){
+
+      width:auto;
+      font-size:3em;
+    }
   }
   &>div{
     display:flex;
@@ -36,6 +46,10 @@ const Container = styled.div`
     position:absolute;
     gap:2em;
     right:0;
+    @media(max-width:${size.mobile}){
+      width:100vw;
+      position:static;
+    }
   }
 
 `

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import pic1 from '../image/1.jpg'
 import pic8 from '../image/8.jpg'
 import pic13 from '../image/13.jpg'
-import color from '../params/color'
+import color,{size} from '../params/color'
 import  {LightButton, DarkButton} from '../page/Button'
 
 const pics = [pic1, pic8, pic13]
@@ -11,7 +11,7 @@ const pics = [pic1, pic8, pic13]
 export function PresIllu(){
   return(
     <Container >
-      {pics.map( pic => <img src={ pic } alt="" />)}
+      {pics.map( ( pic,index  )=> <img key={index} src={ pic } alt="" />)}
       <div>
         A
       </div>
@@ -36,7 +36,6 @@ const Container2 = styled.div`
   color:${color.fonts};
   flex:1.3; 
   text-align:right;
-  min-width:600px;
   z-index:2;
   h1{
     font-size:6em;
@@ -51,7 +50,7 @@ const Container2 = styled.div`
     button:nth-of-type(1){
 
       align-self:flex-end;
-    @media(max-width:900px){
+    @media(max-width:${size.mobile}){
       align-self:flex-start;;
     }
     }
@@ -59,7 +58,7 @@ const Container2 = styled.div`
       align-self:flex-start;;
     }
   }
-  @media(max-width:900px){
+  @media(max-width:${size.mobile}){
     text-align:left;
   }
 
@@ -97,7 +96,7 @@ const Container = styled.div`
     font-size:46em;
 
   }
-  @media(max-width:900px){
+  @media(max-width:${size.mobile}){
     display:none;
   }
 

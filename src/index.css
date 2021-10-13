@@ -9,6 +9,9 @@
 body {
   font-family:"Nunito", sans-serif;
 }
+.App{
+  overflow-x:hidden;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

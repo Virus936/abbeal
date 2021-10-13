@@ -5,6 +5,7 @@ import pic8 from '../image/8.jpg'
 import pic13 from '../image/13.jpg'
 import color from '../params/color'
 import PromiseItem from './PromiseItem'
+import {size} from '../params/color'
 
 const pics = [pic1, pic8, pic13]
 
@@ -19,7 +20,7 @@ const promesses = [
 export function Promise(){
   return(
     <Container>
-      {promesses.map( ( promesse , index) => <PromiseItem index = {( index+1 ).toString().padStart(2,'0')} content={promesse}/>)}
+      {promesses.map( ( promesse , index) => <PromiseItem key={index} index = {( index+1 ).toString().padStart(2,'0')} content={promesse}/>)}
     </Container>
     )
 }
@@ -27,19 +28,24 @@ export function PromiseIllu(){
   return(
     <Container2>
       <h1>Notre promesse</h1>
-      {pics.map(pic => <img src={pic} alt="" />)}
+      {pics.map(( pic,index ) => <img key={index} src={pic} alt="" />)}
     </Container2>
     )
 }
 const Container = styled.div`
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1fr 1fr 1fr;
   grid-template-rows:1fr 1fr 1fr;
   grid-auto-flow:column;
   align-items:center;
   margin-left:10%;
   grid-gap:90px;
-
+  @media(max-width:${size.mobile}){
+    grid-template-columns:  1fr ;
+    grid-template-rows:repeat(6, 1fr);
+    width:100vw;
+    margin-left:0;
+  }
 `
 
 const Container2 = styled.div`
@@ -47,6 +53,9 @@ const Container2 = styled.div`
   display:flex;
   align-items:center;
   width:900px;
+  @media(max-width:${size.mobile}){
+    display:none;
+  }
   h1{
     z-index:1;
     font-size:4em;
