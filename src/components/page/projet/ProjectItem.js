@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import styled from 'styled-components'
-import color from '../../params/color'
+import color,{size} from '../../params/color'
 
 function ProjectItem({illu, title}){
   return(
@@ -12,8 +12,12 @@ function ProjectItem({illu, title}){
     )
 }
 const Container = styled.article`
+  width:500px;
+  @media(max-width:${size.mobile}){
+    width:100%;
+  }
   img{
-    width:500px;
+    width:100%;
     aspect-ratio:4/3;
     background:${color.fonts};
   }

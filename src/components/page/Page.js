@@ -3,17 +3,23 @@ import styled from 'styled-components'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import {size} from '../params/color.js'
+import {useLocation} from 'react-router-dom'
 
+const listPath = {
+  "/": { "name":"Projet","path":"/projet" },
+  "/projet": { "name":"Valley","path":"/valley" },
+  "/valley": { "name":"Contact","path":"/contact" },
+  "/contact": { "name":"Jobs","path":"/jobs" },
+}
 
 function Page({children, path}){
   const ref = useRef(null)
   const changePage = useRef(null)
+  const location = useLocation().pathname
 
   useEffect(() => {
     let mobile = parseInt( size.mobile.split('p')[0])
     let screen = window.innerWidth
-    console.log(screen, 'window.innerWidth')
-    console.log(ref.current.clientWidth, ' ref.current')
 
     if (screen > mobile) {  
       let tween = gsap.fromTo(
@@ -51,7 +57,7 @@ function Page({children, path}){
       <Container  ref={ref}>
         {children}
       </Container>
-      <Link ref={changePage}>Nos Projets</Link>
+      <Link ref={changePage}>{listPath[location].name}</Link>
     </>
     )
 }
